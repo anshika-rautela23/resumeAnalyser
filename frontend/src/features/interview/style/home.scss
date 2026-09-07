@@ -1,0 +1,270 @@
+@use "sass:color";
+
+.home {
+	--surface: #1b1b1b;
+	--surface-raised: #232323;
+	--line: #3a3a3a;
+	--muted: #969696;
+	--soft-white: #f4f1eb;
+	--accent: #e1034d;
+
+	min-height: 100vh;
+	width: 100%;
+	min-width: 0;
+	padding: clamp(2rem, 5vw, 5rem) clamp(1.25rem, 6vw, 7rem);
+	background:
+		radial-gradient(circle at 80% 0%, rgba(225, 3, 77, 0.12), transparent 32rem),
+		#0f0f0f;
+	color: var(--soft-white);
+	font-family: "Avenir Next", "Segoe UI", sans-serif;
+}
+
+.home-workspace {
+	display: grid;
+	grid-template-columns: minmax(0, 1fr);
+	max-width: 75rem;
+	margin: 0 auto;
+	border: 1px solid var(--line);
+	background: var(--line);
+	box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+}
+
+.home-header {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	min-width: 0;
+	margin: 0;
+	padding: clamp(2rem, 5vw, 4.5rem);
+	background: #111;
+	text-align: left;
+}
+
+.eyebrow {
+	margin-bottom: 1.1rem;
+	color: var(--accent);
+	font-size: 0.72rem;
+	font-weight: 700;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+}
+
+.home h1 {
+	margin: 0;
+	font-family: Georgia, "Times New Roman", serif;
+	font-size: clamp(2.4rem, 5vw, 4.8rem);
+	font-weight: 400;
+	letter-spacing: -0.03em;
+	line-height: 1;
+}
+
+.intro {
+	max-width: 34rem;
+	margin: 1.5rem 0 0;
+	color: var(--muted);
+	font-size: 1rem;
+	line-height: 1.7;
+}
+
+.interview-details {
+	display: grid;
+	grid-template-columns: repeat(2, minmax(0, 1fr));
+	gap: 1px;
+	min-width: 0;
+	margin: 0;
+	width: 100%;
+	overflow: hidden;
+	border: 1px solid var(--line);
+	background: var(--line);
+}
+
+.panel {
+	min-width: 0;
+	padding: clamp(1.5rem, 3vw, 2.75rem);
+	background: var(--surface);
+}
+
+.role-panel,
+.profile-panel {
+	flex: 0 0 auto;
+}
+
+.role-panel,
+.profile-panel {
+	min-height: 100%;
+}
+
+.role-panel {
+	padding-bottom: 2rem;
+}
+
+.profile-panel {
+	padding-top: 2rem;
+}
+
+.panel-heading {
+	display: flex;
+	align-items: flex-start;
+	gap: 1rem;
+	margin-bottom: 2rem;
+}
+
+.panel-number {
+	color: var(--accent);
+	font-size: 0.75rem;
+	font-weight: 700;
+	letter-spacing: 0.08em;
+	line-height: 1.6;
+}
+
+.home h2 {
+	margin: 0;
+	font-size: 1.25rem;
+	font-weight: 600;
+}
+
+.panel-heading p {
+	margin: 0.4rem 0 0;
+	color: var(--muted);
+	font-size: 0.85rem;
+}
+
+.home textarea,
+.home input[type="file"] {
+	width: 100%;
+	border: 1px solid var(--line);
+	border-radius: 0;
+	background: var(--surface-raised);
+	color: var(--soft-white);
+	font: inherit;
+	transition: border-color 180ms ease, background-color 180ms ease;
+}
+
+.home textarea {
+	min-height: 20rem;
+	padding: 1rem;
+	resize: vertical;
+	line-height: 1.6;
+}
+
+.home textarea::placeholder {
+	color: #777;
+}
+
+.home textarea:focus,
+.home input[type="file"]:focus {
+	border-color: var(--accent);
+	outline: 2px solid rgba(225, 3, 77, 0.2);
+	outline-offset: 2px;
+}
+
+.input-group + .input-group {
+	margin-top: 1.75rem;
+}
+
+.input-group label {
+	display: block;
+	margin-bottom: 0.65rem;
+	color: var(--soft-white);
+	font-size: 0.78rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.input-group textarea {
+	min-height: 10.5rem;
+}
+
+.home input[type="file"] {
+	padding: 0.8rem;
+	color: var(--muted);
+	font-size: 0.85rem;
+}
+
+.home input[type="file"]::file-selector-button {
+	margin-right: 0.75rem;
+	padding: 0.55rem 0.8rem;
+	border: 0;
+	background: var(--line);
+	color: var(--soft-white);
+	cursor: pointer;
+	font: inherit;
+}
+
+.field-hint {
+	display: block;
+	margin-top: 0.55rem;
+	color: var(--muted);
+	font-size: 0.72rem;
+}
+
+.generate-button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 1rem;
+	width: 100%;
+	margin: 0;
+	padding: 1rem 1.5rem;
+	border: 1px solid var(--accent);
+	background: var(--accent);
+	color: white;
+	cursor: pointer;
+	font: inherit;
+	font-weight: 700;
+	letter-spacing: 0.02em;
+	transition: background-color 180ms ease, transform 180ms ease;
+}
+
+.generate-button,
+.interview-details > .auth-error {
+	grid-column: 1 / -1;
+}
+
+.interview-details > .auth-error {
+	margin: 0;
+	padding: 1rem 1.5rem;
+	background: var(--surface);
+}
+
+.generate-button span {
+	font-size: 1.25rem;
+	line-height: 1;
+}
+
+.generate-button:hover {
+	background: color.adjust(#e1034d, $lightness: -8%);
+	transform: translateY(-2px);
+}
+
+.generate-button:focus-visible {
+	outline: 2px solid var(--soft-white);
+	outline-offset: 3px;
+}
+
+@media (max-width: 760px) {
+	.home {
+		padding-top: 3.5rem;
+	}
+
+	.interview-details {
+		width: 100%;
+	}
+
+	.home-header {
+		padding: 2.5rem 1.5rem;
+	}
+
+	.interview-details {
+		grid-template-columns: minmax(0, 1fr);
+	}
+
+	.panel {
+		padding: 1.5rem;
+	}
+
+	.panel textarea {
+		min-height: 14rem;
+	}
+}

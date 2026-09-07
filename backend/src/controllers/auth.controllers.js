@@ -95,9 +95,9 @@ async function logOutController(req, res) {
 }
 
 async function getmeController(req,res){
-    const user=await userModel.findById(user.id);
+    const user=await userModel.findById(req.user.id);
 
-    return res.status(400).json({
+    return res.status(200).json({
         message:"User details fetched Succesfully",
         user:{
             id:user._id,

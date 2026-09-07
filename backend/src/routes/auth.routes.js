@@ -8,4 +8,4 @@ authRoutes.post('/register', authController.userRegister)
 authRoutes.post('/login', authController.loginController)
 authRoutes.get('/logout', authController.logOutController)
 authRoutes.get('/getme',authMiddleware.authUser,authController.getmeController)
-module.exports={ authRoutes }
+module.exports=authRoutes 

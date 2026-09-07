@@ -1,5 +1,4 @@
 const jwt=require('jsonwebtoken')
-const tokenblacklist=require('../model/tokenblacklist.model');
 const blacklist = require('../model/tokenblacklist.model');
 async function authUser(req,res,next){
 const token=req.cookies.token;
@@ -10,7 +9,7 @@ if(!token)
         message:"Token not provided"
     })
 }
-const iftokenBlacklisted=await blacklistModel.findOne({
+const iftokenBlacklisted=await blacklist.findOne({
     token
 })
 
@@ -21,7 +20,7 @@ if(iftokenBlacklisted)
     })
 }
 try{
-    const decoded=jwt.verify(token,process.env.JWT);
+    const decoded=jwt.verify(token,process.env.JWT || 'secretkey');
     req.user=decoded
     next()
 }
